@@ -8,7 +8,7 @@ namespace PizzaStore.Domain.Models
     //STATES
     //fields
     
-    string imageUrl = "";
+    private readonly string _imageUrl = null;
     public double diameter = 0;
     public string Size = "";
     public List<string> Toppings = new List<string>();
@@ -16,6 +16,8 @@ namespace PizzaStore.Domain.Models
 
     //properties
     public string SizeP { get;}
+
+    //public string Crust {get;}
 
     //BEHAVIORS
     //methods
@@ -53,6 +55,10 @@ namespace PizzaStore.Domain.Models
       Size = size;
       Crust = crust;
       Toppings.AddRange(toppings);
+    }
+    public Pizza()
+    {
+      //intentionally empty for the FileManager
     }
   }
 }

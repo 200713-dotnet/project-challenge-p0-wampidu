@@ -28,28 +28,48 @@ namespace PizzaStore.Client
       //list
       List<Pizza> cart4 = new List<Pizza>(); //default values
       //List<string> cart5 = new List<string>{""};//initial values
-      Menu(cart4);
+      //Menu(cart4);
+      var startup = new PizzaStore.Client.Startup();
+      var user = new User();
+      var store = new Store();
+      var order = startup.CreateOrder(user, store);
 
+      /*  if(order != null)
+       {
+         Menu2(order);
+       }
+       else
+       {
+         System.Console.WriteLine("technical difficulties");
+       } */
+      try
+      {
+        Menu2(startup.CreateOrder(user, store));
+      }
+      catch (Exception ex)
+      {
+        System.Console.WriteLine(ex.Message);
+      }
 
     }
 
+    static void DisplayCart(Order cart)
+    {
+      foreach (var pizza in cart.Pizzas)
+      {
+        System.Console.WriteLine(pizza);
+      }
 
-    static void Menu(List<Pizza> cart)
+    }
+
+    static void Menu2(Order cart)
     {
       var exit = false;
-      var number = 0;
-      var startup = new PizzaStore.Client.Startup();
       do
       {
         //if (number < cart.Length)
         //{
-        System.Console.WriteLine("Select 1 for Cheese Pizza");
-        System.Console.WriteLine("Select 2 for Pepperoni Pizza");
-        System.Console.WriteLine("Select 3 for Hawaiian Pizza");
-        System.Console.WriteLine("Select 4 for Custom Pizza");
-        System.Console.WriteLine("Select 5 to display cart");
-        System.Console.WriteLine("Select 6 to exit");
-        System.Console.WriteLine();
+        Startup.PrintMenu();
 
         int select;
         int.TryParse(Console.ReadLine(), out select);
@@ -57,52 +77,38 @@ namespace PizzaStore.Client
         switch (select)
         {
           case 1:
-            var p = startup.CreatePizza("L", "Stuffed", new List<string> { "cheese" });
-            cart.Add(p);
-            number += 1;
+            cart.CreatePizza("L", "Stuffed", new List<string> { "cheese" });
             System.Console.WriteLine("added Cheese Pizza");
             break;
           case 2:
-            number += 1;
-            cart.Add(startup.CreatePizza("L", "Stuffed", new List<string> { "pepperoni" }));
+            cart.CreatePizza("L", "Stuffed", new List<string> { "pepperoni" });
             System.Console.WriteLine("added Pepperoni Pizza");
             break;
           case 3:
-            number += 1;
-            cart.Add(startup.CreatePizza("L", "Stuffed", new List<string> { "hawaiian" }));
+            cart.CreatePizza("L", "Stuffed", new List<string> { "hawaiian" });
             System.Console.WriteLine("added Hawaiian Pizza");
             break;
           case 4:
-            number += 1;
-            cart.Add(startup.CreatePizza("L", "Stuffed", new List<string> { "custom" }));
+            cart.CreatePizza("L", "Stuffed", new List<string> { "custom" });
             System.Console.WriteLine("added Custom Pizza");
             break;
           case 5:
             DisplayCart(cart);
             break;
           case 6:
+            var fm = new FileManager();
+            fm.Write(cart);
             System.Console.WriteLine("Thank you goodbye");
             exit = true;
             break;
+          case 7:
+            var fmr = new FileManager();
+            DisplayCart(fmr.Read());
+            break;
+
         }
-        //}
-        //else
-        // {
-        //   DisplayCart(cart);
-        //   exit = true;
-        // }
       } while (!exit);
     }
-
-    static void DisplayCart(List<Pizza> cart)
-    {
-      foreach (var pizza in cart)
-      {
-        System.Console.WriteLine(pizza);
-      }
-
-    }
-
 
   }
 }

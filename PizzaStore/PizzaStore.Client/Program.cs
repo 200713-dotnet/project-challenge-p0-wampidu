@@ -17,17 +17,14 @@ namespace PizzaStore.Client
       Console.WriteLine("Welcome to PizzaWorld!");
       System.Console.WriteLine("Best Pizza in the World!");
       System.Console.WriteLine();
-
       List<Pizza> cart4 = new List<Pizza>();
       var startup = new PizzaStore.Client.Startup();
       var user = new User();
       var store = new Store();
       var order = startup.CreateOrder(user, store);
-
-      
       try
       {
-        Menu2(startup.CreateOrder(user, store));
+        Menu2(startup.CreateOrder(user, store), store);
       }
       catch (Exception ex)
       {
@@ -38,14 +35,17 @@ namespace PizzaStore.Client
 
     static void DisplayCart(Order cart)
     {
+      double total = 0;
       foreach (var pizza in cart.Pizzas)
       {
         System.Console.WriteLine(pizza);
+        System.Console.WriteLine(pizza.Price());
+        total = total + pizza.Price();
       }
-
+      System.Console.WriteLine($"Your cart total is ${total}.00");
     }
 
-    static void Menu2(Order cart)
+    static void Menu2(Order cart, Store store)
     {
       var exit = false;
       do
@@ -57,21 +57,64 @@ namespace PizzaStore.Client
         int crustsel;
         int select;
         int.TryParse(Console.ReadLine(), out select);
-
         switch (select)
         {
           case 1:
-            string Size = "";
-            string Crust = "";
-            cart.CreatePizza("L", "Stuffed", new List<string> { "cheese" });
+            string size = "";
+            string crust = "";
+            Startup.SizeMenu();
+            int.TryParse(Console.ReadLine(), out sizesel);
+            switch(sizesel)
+            {
+              case 1:
+                size = "small";
+                break;
+              case 2:
+                size = "medium";
+                break;
+              case 3:
+                size = "large";
+                break;
+            }
+            cart.CreatePizza(size, "regular", new List<string> { "cheese" });
             System.Console.WriteLine("added Cheese Pizza");
             break;
           case 2:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "pepperoni", "cheese" });
+            size = "";
+            Startup.SizeMenu();
+            int.TryParse(Console.ReadLine(), out sizesel);
+            switch(sizesel)
+            {
+              case 1:
+                size = "small";
+                break;
+              case 2:
+                size = "medium";
+                break;
+              case 3:
+                size = "large";
+                break;
+            }
+            cart.CreatePizza(size, "regular crust", new List<string> { "pepperoni", "cheese" });
             System.Console.WriteLine("added Pepperoni Pizza");
             break;
           case 3:
-            cart.CreatePizza("L", "Stuffed", new List<string> { "hawaiian", "cheese" });
+            size = "";
+            Startup.SizeMenu();
+            int.TryParse(Console.ReadLine(), out sizesel);
+            switch(sizesel)
+            {
+              case 1:
+                size = "small";
+                break;
+              case 2:
+                size = "medium";
+                break;
+              case 3:
+                size = "large";
+                break;
+            }
+            cart.CreatePizza(size, "regular crust", new List<string> { "hawaiian", "cheese" });
             System.Console.WriteLine("added Hawaiian Pizza");
             break;
           case 4:
@@ -81,37 +124,36 @@ namespace PizzaStore.Client
             //string topping2 = "";
             List<string> CustomPizzaToppings = new List<string>();
             CustomPizzaToppings.Add("cheese");
-            Size = "";
+            size = "";
             switch(sizesel)
             {
               case 1:
-                Size = "small";
+                size = "small";
                 break;
               case 2:
-                Size = "medium";
+                size = "medium";
                 break;
               case 3:
-                Size = "large";
+                size = "large";
                 break;
             }
             //^^Size Selection
-            
-            Crust = "";
+            crust = "";
             Startup.CrustMenu();
             int.TryParse(Console.ReadLine(), out crustsel);
             switch(crustsel)
             {
               case 1:
-                Crust = "regular crust";
+                crust = "regular crust";
                 break;
               case 2:
-                Crust = "stuffed crust";
+                crust = "stuffed crust";
                 break;
               case 3:
-                Crust = "flatbread crust";
+                crust = "flatbread crust";
                 break;
               case 4:
-                Crust = "thin crust";
+                crust = "thin crust";
                 break;
             }
             //^^Crust Selection
@@ -121,7 +163,6 @@ namespace PizzaStore.Client
             do
             {
               int toppingsel;
-              
               Startup.ToppingMenu();
               int.TryParse(Console.ReadLine(), out toppingsel);
               switch(toppingsel)
@@ -159,39 +200,40 @@ namespace PizzaStore.Client
                   TotalToppings = 1 + TotalToppings;
                   break;
                 case 9:
-                  if (TotalToppings >= 1)
+                  if (TotalToppings >= 2)
                   {
                     end = true;
                   }
                   else
                   {
-                    System.Console.WriteLine("Please select at least one topping, otherwise choose the cheese pizza preset");
+                    System.Console.WriteLine("Please select at least two toppings, otherwise choose from the preset options");
                   }
                   break;
               }
-            } while (TotalToppings < 3 || end == true);
+            } while (TotalToppings < 5 && end == false);
             //^^Topping Selection
-            cart.CreatePizza(Size, Crust, CustomPizzaToppings);
-            System.Console.WriteLine($"added {Size} {Crust} custom pizza");
+            cart.CreatePizza(size, crust, CustomPizzaToppings);
+            System.Console.WriteLine($"added {size} {crust} custom pizza");
             break;
           case 5:
             DisplayCart(cart);
             break;
           case 6:
+            store.PrintOrders();
+            break;
+          case 7:
             var fm = new FileManager();
             fm.Write(cart);
             System.Console.WriteLine("Thank you goodbye");
             exit = true;
             break;
-          case 7:
+          case 8:
             var fmr = new FileManager();
             DisplayCart(fmr.Read());
             break;
-
         }
       } while (!exit);
     }
-
   }
 }
 

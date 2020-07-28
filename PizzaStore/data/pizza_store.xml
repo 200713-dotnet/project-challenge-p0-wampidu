@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ordercost>0</ordercost>
+  <pizzanum>0</pizzanum>
   <Pizzas>
     <Pizza>
       <diameter>0</diameter>
-      <Size>small</Size>
-      <Toppings>
-        <string>cheese</string>
-        <string>mushroom</string>
-        <string>bacon</string>
-        <string>anchovies</string>
-      </Toppings>
-      <Crust>stuffed crust</Crust>
-    </Pizza>
-    <Pizza>
-      <diameter>0</diameter>
-      <Size>L</Size>
+      <cost>0</cost>
+      <Size>medium</Size>
       <Toppings>
         <string>cheese</string>
       </Toppings>
-      <Crust>Stuffed</Crust>
+      <Crust>regular</Crust>
     </Pizza>
   </Pizzas>
 </Order>

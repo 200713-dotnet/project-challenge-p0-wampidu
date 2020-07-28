@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 
 namespace PizzaStore.Domain.Models
 {
@@ -9,6 +10,16 @@ namespace PizzaStore.Domain.Models
     public Store()
     {
       Orders = new List<Order>();
+    }
+
+    public void PrintOrders()
+    {
+      //var sb = new StringBuilder();
+      foreach(var t in Orders)
+      {
+        //sb.Append(t + ", ");
+        System.Console.WriteLine(Orders);
+      }
     }
   }
 }

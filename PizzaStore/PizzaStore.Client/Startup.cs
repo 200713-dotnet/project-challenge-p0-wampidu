@@ -34,12 +34,13 @@ namespace PizzaStore.Client
         System.Console.WriteLine("Select 3 for Hawaiian Pizza");
         System.Console.WriteLine("Select 4 for Custom Pizza");
         System.Console.WriteLine("Select 5 to display cart");
-        System.Console.WriteLine("Select 6 to exit");
+        System.Console.WriteLine("Select 6 to display current orders");
+        System.Console.WriteLine("Select 7 to exit");
         System.Console.WriteLine();
     }
     internal static void ToppingMenu()
     {
-      System.Console.WriteLine("Please specify up to 3 toppings you would like (cheese included by default)");
+      System.Console.WriteLine("Please specify up to 5 toppings you would like (cheese included by default)");
       System.Console.WriteLine("Select 1 for pepperoni");
       System.Console.WriteLine("Select 2 for sausage");
       System.Console.WriteLine("Select 3 for mushroom");

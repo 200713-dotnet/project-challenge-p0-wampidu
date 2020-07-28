@@ -11,6 +11,7 @@ namespace PizzaStore.Domain.Models
     
     private readonly string _imageUrl = null;
     public double diameter = 0;
+    public double cost = 0;
     public string Size = "";
     public List<string> Toppings = new List<string>();
     public string Crust = "";
@@ -27,6 +28,23 @@ namespace PizzaStore.Domain.Models
     void AddToppings(string topping)
     {
       Toppings.Add(topping);
+    }
+
+    public double Price()
+    {
+      if (Size.Equals("small"))
+      {
+        cost = 5;
+      }
+      else if (Size.Equals("medium"))
+      {
+        cost = 7;
+      }
+      else if (Size.Equals("large"))
+      {
+        cost = 9;
+      }
+      return cost;
     }
 
     public override string ToString()

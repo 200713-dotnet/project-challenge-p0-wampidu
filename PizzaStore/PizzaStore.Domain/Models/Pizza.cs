@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace PizzaStore.Domain.Models
 {
@@ -30,20 +31,11 @@ namespace PizzaStore.Domain.Models
 
     public override string ToString()
     {
-      /*
-        string concatenation = immutable
-        ex: string1 
-        string1 + string2 
-        string1 + string2 + string3
-
-        stringbuilder = mutable
-        ex: string1 + string2 + string3
-
-      */
+      
       var sb = new StringBuilder();
       foreach(var t in Toppings)
       {
-        sb.Append(t);
+        sb.Append(t + ", ");
       }
 
       return $"{Crust} {Size} {sb}";

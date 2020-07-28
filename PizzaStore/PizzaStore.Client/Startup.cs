@@ -27,7 +27,7 @@ namespace PizzaStore.Client
         GC.Collect();
       }
     }
-    internal static void PrintMenu()
+    internal static void InitialMenu()
     {
         System.Console.WriteLine("Select 1 for Cheese Pizza");
         System.Console.WriteLine("Select 2 for Pepperoni Pizza");
@@ -36,6 +36,32 @@ namespace PizzaStore.Client
         System.Console.WriteLine("Select 5 to display cart");
         System.Console.WriteLine("Select 6 to exit");
         System.Console.WriteLine();
+    }
+    internal static void ToppingMenu()
+    {
+      System.Console.WriteLine("Please specify up to 3 toppings you would like (cheese included by default)");
+      System.Console.WriteLine("Select 1 for pepperoni");
+      System.Console.WriteLine("Select 2 for sausage");
+      System.Console.WriteLine("Select 3 for mushroom");
+      System.Console.WriteLine("Select 4 for bacon");
+      System.Console.WriteLine("Select 5 for anchovies");
+      System.Console.WriteLine("Select 6 for olives");
+      System.Console.WriteLine("Select 7 for onion");
+      System.Console.WriteLine("Select 8 for chicken");
+      System.Console.WriteLine("Select 9 to finish selection");
+    }
+    internal static void SizeMenu()
+    {
+      System.Console.WriteLine("Select 1 for a small pizza");
+      System.Console.WriteLine("Select 2 for a medium pizza");
+      System.Console.WriteLine("Select 3 for a large pizza");
+    }
+    internal static void CrustMenu()
+    {
+      System.Console.WriteLine("Select 1 for a regular crust");
+      System.Console.WriteLine("Select 2 for a stuffed crust");
+      System.Console.WriteLine("Select 3 for a flatbread");
+      System.Console.WriteLine("Select 4 for a thin crust");
     }
   }
 }

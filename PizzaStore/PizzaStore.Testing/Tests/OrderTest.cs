@@ -10,7 +10,7 @@ namespace PizzaStore.Testing.Tests
     [Theory]
     [InlineData("S","C","T","N")]
     [InlineData("M","C2","T2","N2")]
-    public void Test_CreatePizza(string s, string c, string t)
+    public void Test_CreatePizza(string s, string c, string t, string n)
     {
       
       //arrange

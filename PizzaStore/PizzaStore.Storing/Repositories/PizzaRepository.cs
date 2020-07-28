@@ -34,9 +34,10 @@ namespace PizzaStore.Storing.Repositories
       {
         domainPizzaList.Add(new domain.Pizza()
         {
-          Crust = new domain.Crust() { Name = item.Crust.Name },
-          Size = new domain.Size() { Name = item.Size.Name },
-          Toppings = new List<domain.Topping>()
+          //Crust = new domain.Crust() { Name = item.Crust.Name },
+          //Size = new domain.Size() { Name = item.Size.Name },
+          //Toppings = new List<domain.Topping>()
+          
         });
       };
 

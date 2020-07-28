@@ -15,6 +15,7 @@ namespace PizzaStore.Domain.Models
     public string Size = "";
     public List<string> Toppings = new List<string>();
     public string Crust = "";
+    public string Name = "";
 
     //properties
     public string SizeP { get;}
@@ -60,11 +61,12 @@ namespace PizzaStore.Domain.Models
     }
 
     //constructors
-    public Pizza(string size, string crust, List<string> toppings)
+    public Pizza(string size, string crust, List<string> toppings, string name)
     {
       Size = size;
       Crust = crust;
       Toppings.AddRange(toppings);
+      Name = name;
     }
     public Pizza()
     {

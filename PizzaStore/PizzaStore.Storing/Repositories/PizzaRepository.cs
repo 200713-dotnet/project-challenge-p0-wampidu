@@ -13,9 +13,10 @@ namespace PizzaStore.Storing.Repositories
     {
       var newPizza = new Pizza();
 
-      newPizza.Crust = new Crust() { Name = pizza.Crust.Name };
-      newPizza.Size = new Size() { Name = pizza.Size.Name };
+      newPizza.Crust.Name =  pizza.Crust ;
+      newPizza.Size.Name = pizza.Size ;
       newPizza.Name = pizza.Name;
+      
       var orderDate = DateTime.UtcNow;
       //newPizza.DateModified = DateTime.Now;
       //newPizza.Active = false;

@@ -15,8 +15,8 @@ namespace PizzaStore.Client
 
     static void Welcome()
     {
-      Console.WriteLine("Welcome to PizzaWorld!");
-      System.Console.WriteLine("Best Pizza in the World!");
+      Console.WriteLine("Welcome to the pizza ordering service");
+      System.Console.WriteLine();
       System.Console.WriteLine();
       List<Pizza> cart4 = new List<Pizza>();
       var startup = new PizzaStore.Client.Startup();
@@ -75,7 +75,8 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            cart.CreatePizza(size, "regular", new List<string> { "cheese" });
+            crust = "regular crust";
+            cart.CreatePizza(size, crust, new List<string> { "cheese" }, "cheese pizza");
             System.Console.WriteLine("added Cheese Pizza");
             break;
           case 2:
@@ -94,7 +95,8 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            cart.CreatePizza(size, "regular crust", new List<string> { "pepperoni", "cheese" });
+            crust = "regular crust";
+            cart.CreatePizza(size, crust, new List<string> { "pepperoni", "cheese" }, "pepperoni pizza");
             System.Console.WriteLine("added Pepperoni Pizza");
             break;
           case 3:
@@ -113,7 +115,8 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            cart.CreatePizza(size, "regular crust", new List<string> { "hawaiian", "cheese" });
+            crust = "regular crust";
+            cart.CreatePizza(size, crust, new List<string> { "hawaiian", "cheese" }, "hawaiian");
             System.Console.WriteLine("added Hawaiian Pizza");
             break;
           case 4:
@@ -211,7 +214,7 @@ namespace PizzaStore.Client
               }
             } while (TotalToppings < 5 && end == false);
             //^^Topping Selection
-            cart.CreatePizza(size, crust, CustomPizzaToppings);
+            cart.CreatePizza(size, crust, CustomPizzaToppings, "custom pizza");
             System.Console.WriteLine($"added {size} {crust} custom pizza");
             break;
           case 5:

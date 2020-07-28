@@ -8,9 +8,9 @@ namespace PizzaStore.Domain.Models
     public double ordercost;
     public int pizzanum;
 
-    public void CreatePizza(string size, string crust, List<string> toppings)
+    public void CreatePizza(string size, string crust, List<string> toppings, string name)
     {
-      Pizzas.Add(new Pizza(size, crust, toppings));
+      Pizzas.Add(new Pizza(size, crust, toppings, name));
     }
 
     public Order()

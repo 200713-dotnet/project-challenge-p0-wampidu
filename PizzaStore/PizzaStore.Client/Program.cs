@@ -50,8 +50,6 @@ namespace PizzaStore.Client
       var exit = false;
       do
       {
-        //if (number < cart.Length)
-        //{
         Startup.InitialMenu();
         int sizesel;
         int crustsel;

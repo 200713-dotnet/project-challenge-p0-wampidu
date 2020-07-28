@@ -19,6 +19,7 @@ namespace PizzaStore.Domain.Models
       ordercost = 0;
       pizzanum = 0;
     }
+    
 
   }
 

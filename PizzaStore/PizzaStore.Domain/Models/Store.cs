@@ -6,6 +6,7 @@ namespace PizzaStore.Domain.Models
   public class Store
   {
     public List<Order> Orders {get;}
+    public string StoreName {get; set;}
 
     public Store()
     {

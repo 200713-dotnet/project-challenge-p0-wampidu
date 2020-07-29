@@ -57,7 +57,7 @@ namespace PizzaStore.Domain.Models
         sb.Append(t + ", ");
       }
 
-      return $"{Crust} {Size} {sb} {Name}";
+      return $"Crust: {Crust} Size: {Size} Toppings: {sb} Pizza Name: {Name}";
     }
 
     //constructors

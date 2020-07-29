@@ -29,14 +29,14 @@ namespace PizzaStore.Client
     }
     internal static void InitialMenu()
     {
-        System.Console.WriteLine("Select 1 for Cheese Pizza");
-        System.Console.WriteLine("Select 2 for Pepperoni Pizza");
-        System.Console.WriteLine("Select 3 for Hawaiian Pizza");
-        System.Console.WriteLine("Select 4 for Custom Pizza");
-        System.Console.WriteLine("Select 5 to display cart");
-        System.Console.WriteLine("Select 6 to display current orders");
-        System.Console.WriteLine("Select 7 to exit");
-        System.Console.WriteLine();
+      System.Console.WriteLine("Select 1 for Cheese Pizza");
+      System.Console.WriteLine("Select 2 for Pepperoni Pizza");
+      System.Console.WriteLine("Select 3 for Hawaiian Pizza");
+      System.Console.WriteLine("Select 4 for Custom Pizza");
+      System.Console.WriteLine("Select 5 to display cart");
+      System.Console.WriteLine("Select 6 to remove a pizza from the cart");
+      System.Console.WriteLine("Select 7 to exit");
+      System.Console.WriteLine();
     }
     internal static void ToppingMenu()
     {

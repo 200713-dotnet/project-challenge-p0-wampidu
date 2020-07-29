@@ -51,5 +51,7 @@ create table Pizza.PizzaTopping
   constraint FK_ToppingId foreign key (ToppingId) references Pizza.Topping(ToppingId)
 );
 
---SELECT * from Pizza.Pizza;
+SELECT * from Pizza.Pizza;
+select * from Pizza.Crust;
+select * from Pizza.[Size];
 --Docker container command: docker container run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password12345' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest

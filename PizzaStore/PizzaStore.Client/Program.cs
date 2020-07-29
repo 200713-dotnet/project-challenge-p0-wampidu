@@ -37,18 +37,22 @@ namespace PizzaStore.Client
     static void DisplayCart(Order cart)
     {
       double total = 0;
+      int pizzacount = 0;
       foreach (var pizza in cart.Pizzas)
       {
-        System.Console.WriteLine(pizza);
-        System.Console.WriteLine(pizza.Price());
+        pizzacount = 1 + pizzacount;
+        System.Console.WriteLine($"{pizzacount}: Price: ${pizza.Price()}.00 {pizza}");
+        //System.Console.WriteLine(pizza.Price());
         total = total + pizza.Price();
       }
       System.Console.WriteLine($"Your cart total is ${total}.00");
+      System.Console.WriteLine();
     }
 
     static void Menu2(Order cart, Store store)
     {
       var exit = false;
+      var pr = new PizzaRepository();
       do
       {
         Startup.InitialMenu();
@@ -63,7 +67,7 @@ namespace PizzaStore.Client
             string crust = "";
             Startup.SizeMenu();
             int.TryParse(Console.ReadLine(), out sizesel);
-            switch(sizesel)
+            switch (sizesel)
             {
               case 1:
                 size = "small";
@@ -75,15 +79,17 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            crust = "regular crust";
-            cart.CreatePizza(size, crust, new List<string> { "cheese" }, "cheese pizza");
-            System.Console.WriteLine("added Cheese Pizza");
+            crust = "regular";
+            var pizza = cart.CreatePizza(size, crust, new List<string> { "cheese" }, "cheese pizza");
+            System.Console.WriteLine($"added a {size} Cheese Pizza");
+            System.Console.WriteLine();
+            //pr.Create(pizza);
             break;
           case 2:
             size = "";
             Startup.SizeMenu();
             int.TryParse(Console.ReadLine(), out sizesel);
-            switch(sizesel)
+            switch (sizesel)
             {
               case 1:
                 size = "small";
@@ -95,15 +101,16 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            crust = "regular crust";
-            cart.CreatePizza(size, crust, new List<string> { "pepperoni", "cheese" }, "pepperoni pizza");
-            System.Console.WriteLine("added Pepperoni Pizza");
+            crust = "regular";
+            pizza = cart.CreatePizza(size, crust, new List<string> { "pepperoni", "cheese" }, "pepperoni pizza");
+            System.Console.WriteLine($"added a {size} Pepperoni Pizza");
+            System.Console.WriteLine();
             break;
           case 3:
             size = "";
             Startup.SizeMenu();
             int.TryParse(Console.ReadLine(), out sizesel);
-            switch(sizesel)
+            switch (sizesel)
             {
               case 1:
                 size = "small";
@@ -115,9 +122,10 @@ namespace PizzaStore.Client
                 size = "large";
                 break;
             }
-            crust = "regular crust";
-            cart.CreatePizza(size, crust, new List<string> { "hawaiian", "cheese" }, "hawaiian");
-            System.Console.WriteLine("added Hawaiian Pizza");
+            crust = "regular";
+            pizza = cart.CreatePizza(size, crust, new List<string> { "hawaiian", "cheese" }, "hawaiian");
+            System.Console.WriteLine($"added a {size} Hawaiian Pizza");
+            System.Console.WriteLine();
             break;
           case 4:
             Startup.SizeMenu();
@@ -127,7 +135,7 @@ namespace PizzaStore.Client
             List<string> CustomPizzaToppings = new List<string>();
             CustomPizzaToppings.Add("cheese");
             size = "";
-            switch(sizesel)
+            switch (sizesel)
             {
               case 1:
                 size = "small";
@@ -143,19 +151,19 @@ namespace PizzaStore.Client
             crust = "";
             Startup.CrustMenu();
             int.TryParse(Console.ReadLine(), out crustsel);
-            switch(crustsel)
+            switch (crustsel)
             {
               case 1:
-                crust = "regular crust";
+                crust = "regular";
                 break;
               case 2:
-                crust = "stuffed crust";
+                crust = "stuffed";
                 break;
               case 3:
-                crust = "flatbread crust";
+                crust = "flatbread";
                 break;
               case 4:
-                crust = "thin crust";
+                crust = "thin";
                 break;
             }
             //^^Crust Selection
@@ -167,7 +175,7 @@ namespace PizzaStore.Client
               int toppingsel;
               Startup.ToppingMenu();
               int.TryParse(Console.ReadLine(), out toppingsel);
-              switch(toppingsel)
+              switch (toppingsel)
               {
                 case 1:
                   CustomPizzaToppings.Add("pepperoni");
@@ -214,14 +222,42 @@ namespace PizzaStore.Client
               }
             } while (TotalToppings < 5 && end == false);
             //^^Topping Selection
-            cart.CreatePizza(size, crust, CustomPizzaToppings, "custom pizza");
-            System.Console.WriteLine($"added {size} {crust} custom pizza");
+            pizza = cart.CreatePizza(size, crust, CustomPizzaToppings, "custom pizza");
+            System.Console.WriteLine($"added a {size} {crust} custom pizza");
+            System.Console.WriteLine();
             break;
           case 5:
-            DisplayCart(cart);
+            if (cart.pizzanum == 0)
+            {
+              System.Console.WriteLine("No pizzas are in your cart.");
+              System.Console.WriteLine();
+            }
+            else DisplayCart(cart);
             break;
           case 6:
-            store.PrintOrders();
+            int OrderNum = cart.Pizzas.Count;
+            if (OrderNum > 0)
+            {
+              System.Console.WriteLine("select a pizza to remove");
+              System.Console.WriteLine("press enter to cancel");
+              DisplayCart(cart);
+              int delete;
+              int.TryParse(Console.ReadLine(), out delete);
+              if (delete <= OrderNum && delete > 0)
+              {
+                cart.RemovePizza(delete);
+                System.Console.WriteLine("Pizza removed");
+                System.Console.WriteLine();
+              }
+              else
+              {
+                System.Console.WriteLine("deletion canceled");
+              }
+            }
+            else
+            {
+              System.Console.WriteLine("no pizza to delete");
+            }
             break;
           case 7:
             var fm = new FileManager();

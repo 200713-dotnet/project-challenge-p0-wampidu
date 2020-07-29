@@ -260,14 +260,24 @@ namespace PizzaStore.Client
             }
             break;
           case 7:
+            OrderNum = cart.Pizzas.Count;
+            if(OrderNum > 0)
+            {
             var fm = new FileManager();
             fm.Write(cart);
-            System.Console.WriteLine("Thank you goodbye");
-            exit = true;
+            System.Console.WriteLine("Order successfully placed.");
+            }
+            else System.Console.WriteLine("No pizzas in your cart. Order cannot be placed.");;
+            //System.Console.WriteLine("Thank you goodbye");
+            
             break;
           case 8:
             var fmr = new FileManager();
             DisplayCart(fmr.Read());
+            //exit = true;
+            break;
+          case 9:
+            exit = true;
             break;
         }
       } while (!exit);

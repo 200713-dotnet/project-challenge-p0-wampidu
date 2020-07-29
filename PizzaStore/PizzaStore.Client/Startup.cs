@@ -35,7 +35,9 @@ namespace PizzaStore.Client
       System.Console.WriteLine("Select 4 for Custom Pizza");
       System.Console.WriteLine("Select 5 to display cart");
       System.Console.WriteLine("Select 6 to remove a pizza from the cart");
-      System.Console.WriteLine("Select 7 to exit");
+      System.Console.WriteLine("Select 7 to place your order");
+      System.Console.WriteLine("Select 8 to view your order");
+      System.Console.WriteLine("Select 9 to exit");
       System.Console.WriteLine();
     }
     internal static void ToppingMenu()
@@ -53,9 +55,9 @@ namespace PizzaStore.Client
     }
     internal static void SizeMenu()
     {
-      System.Console.WriteLine("Select 1 for a small pizza");
-      System.Console.WriteLine("Select 2 for a medium pizza");
-      System.Console.WriteLine("Select 3 for a large pizza");
+      System.Console.WriteLine("Select 1 for a small pizza: $5.00");
+      System.Console.WriteLine("Select 2 for a medium pizza: $7.00");
+      System.Console.WriteLine("Select 3 for a large pizza: $9.00");
     }
     internal static void CrustMenu()
     {

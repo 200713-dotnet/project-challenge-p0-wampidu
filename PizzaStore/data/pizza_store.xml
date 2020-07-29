@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ordercost>-5</ordercost>
-  <pizzanum>0</pizzanum>
+  <ordercost>0</ordercost>
+  <pizzanum>2</pizzanum>
   <Pizzas>
     <Pizza>
       <diameter>0</diameter>
-      <cost>9</cost>
-      <Size>large</Size>
+      <cost>7</cost>
+      <Size>medium</Size>
       <Toppings>
-        <string>pepperoni</string>
         <string>cheese</string>
       </Toppings>
       <Crust>regular</Crust>
-      <Name>pepperoni pizza</Name>
+      <Name>cheese pizza</Name>
+    </Pizza>
+    <Pizza>
+      <diameter>0</diameter>
+      <cost>7</cost>
+      <Size>medium</Size>
+      <Toppings>
+        <string>hawaiian</string>
+        <string>cheese</string>
+      </Toppings>
+      <Crust>regular</Crust>
+      <Name>hawaiian</Name>
     </Pizza>
   </Pizzas>
 </Order>
